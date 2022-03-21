@@ -37,7 +37,9 @@ services:
         stdin_open: true
         tty: true
         networks:
-            - backend
+            backend:
+                aliases:
+                    - database.backend
 
 volumes:
     mysqlData:

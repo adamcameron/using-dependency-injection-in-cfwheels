@@ -5,7 +5,7 @@
 // See http://docs.cfwheels.org/docs/configuration-and-defaults for more info.
 
 // If you leave the settings below commented out, CFWheels will set the data source name to the same name as the folder the application resides in.
-// set(dataSourceName="");
-// set(dataSourceUserName="");
-// set(dataSourcePassword="");
+set(dataSourceName="cfwudi")
+set(dataSourceUserName="cfwudi")
+set(dataSourcePassword=server.system.environment.MARIADB_PASSWORD)
 </cfscript>
