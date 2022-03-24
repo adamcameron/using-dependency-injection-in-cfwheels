@@ -5,5 +5,14 @@
  */
 component extends="wheels.Model" {
 
-
+    public any function $createInstance(
+        required struct properties,
+        required boolean persisted,
+        numeric row = 1,
+        boolean base = true,
+        boolean callbacks = true
+    ) {
+        modelObject = super.$createInstance(argumentCollection=arguments)
+        return modelObject
+    }
 }
