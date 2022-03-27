@@ -6,17 +6,21 @@
 
 import services.DependencyInjectionService
 
-component extends="wheels.Model" {
+component extends=wheels.Model {
 
     public function config() {
-        afterInitialization("loadIocContainer");
+        afterInitialization("loadIocContainer")
     }
 
     private function loadIocContainer() {
         variables.diService = new DependencyInjectionService()
+        setDependencies()
     }
 
     public function getDiService() {
         return variables.diService
+    }
+
+    private function setDependencies() {
     }
 }

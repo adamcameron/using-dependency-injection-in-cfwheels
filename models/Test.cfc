@@ -5,8 +5,11 @@ component extends=Model {
         table(name="test")
     }
 
-    public function getContainer() {
-        return variables.container
+    private function setDependencies() {
+        variables.dependency = variables.diService.getBean("TestDependency")
     }
 
+    public function getValue() {
+        return variables.dependency.getValue()
+    }
 }

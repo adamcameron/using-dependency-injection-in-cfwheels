@@ -5,14 +5,13 @@ component extends=BaseSpec {
     function run() {
         describe("Tests for TestModel", () => {
 
-            it("loads its depenency", () => {
+            it("proxies method implementation to depedency", () => {
                 testModel = model("Test").new()
 
-                diService = testModel.getDiService()
+                result = testModel.getValue()
 
-                expect(diService).toBeInstanceOf("services.DependencyInjectionService")
+                expect(result).toBe("SET_BY_DEPENDENCY")
             })
         })
     }
-
 }
