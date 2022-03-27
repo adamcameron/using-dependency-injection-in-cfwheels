@@ -1,8 +1,12 @@
 component extends=Model {
 
-     function config() {
+    function config() {
         super.config()
         table(name="test")
+    }
+
+    public function getContainer() {
+        return variables.container
     }
 
 }

@@ -3,13 +3,20 @@
  * You can add functions to this file to make them available in all your models.
  * Do not delete this file.
  */
+
+import services.DependencyInjectionService
+
 component extends="wheels.Model" {
 
     public function config() {
-        afterInitialization("setFindMe");
+        afterInitialization("loadIocContainer");
     }
 
-    private function setFindMe() {
-        this.findMe = "found"
+    private function loadIocContainer() {
+        variables.diService = new DependencyInjectionService()
+    }
+
+    public function getDiService() {
+        return variables.diService
     }
 }

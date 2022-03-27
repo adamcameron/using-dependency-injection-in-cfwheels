@@ -3,19 +3,17 @@ import test.BaseSpec
 component extends=BaseSpec {
 
     function run() {
-        fdescribe("Tests Model methods", () => {
+        describe("Tests Model methods", () => {
             it("calls the afterInitialization handler when new is called", () => {
                 testModel = model("Test").new()
 
-                expect(testModel).toHaveKey("findMe")
-                expect(testModel.findMe).toBe("found")
+                expect(() => testModel.getDiService()).notToThrow()
             })
 
             it("calls the afterInitialization handler when findOne is called", () => {
                 testModel = model("Test").findOne()
 
-                expect(testModel).toHaveKey("findMe")
-                expect(testModel.findMe).toBe("found")
+                expect(() => testModel.getDiService()).notToThrow()
             })
 
             it("calls the afterInitialization handler when findAll is called", () => {
@@ -23,8 +21,7 @@ component extends=BaseSpec {
 
                 expect(testModels).notToBeEmpty()
                 testModels.each((testModel) => {
-                    expect(testModel).toHaveKey("findMe")
-                    expect(testModel.findMe).toBe("found")
+                    expect(() => testModel.getDiService()).notToThrow()
                 })
             })
         })
