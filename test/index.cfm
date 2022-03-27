@@ -15,10 +15,6 @@
         directories = URL.directories.listToArray()
     )
 
-	// runs the tests with either HTML output if we browse to this file, or as text if it's run from the shell
-	reportFormat = url.keyExists("reportFormat") ? url.reportFormat : "SimpleReporter"
-	result = testbox.run(
-		reporter = "testbox.system.reports.#reportFormat#"
-	)
+	result = testbox.run(reporter="test.system.reports.SimpleReporter")
 	writeOutput(result.trim())
 </cfscript>
