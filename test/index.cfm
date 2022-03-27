@@ -7,7 +7,7 @@
 	if (URL.testBundles.len()) {
 		param URL.directories = "";
 	}else{
-		param URL.directories="test.integration,test.unit";
+		param URL.directories="test.functional,test.integration,test.unit";
 	}
 
 	testbox = new TestBox(
