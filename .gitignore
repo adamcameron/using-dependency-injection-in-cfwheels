@@ -1,2 +1,5 @@
-/var/
 .vscode
+/framework/
+/logbox/
+/testbox/
+/var/
