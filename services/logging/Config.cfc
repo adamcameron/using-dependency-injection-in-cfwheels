@@ -3,7 +3,7 @@ component {
         variables.logBox = {
             appenders = {
                 InMemoryAppender = {
-                    class="services.logging.InMemoryAppender"
+                    class = "services.logging.InMemoryAppender"
                 }
             },
             root = {
@@ -11,9 +11,9 @@ component {
             },
             categories = {
                 default = {
-                    levelMin="fatal",
-                    levelMax="info",
-                    appenders="InMemoryAppender"
+                    levelMin = "fatal",
+                    levelMax = "info",
+                    appenders = "InMemoryAppender"
                 }
             }
         }
