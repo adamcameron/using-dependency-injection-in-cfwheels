@@ -10,18 +10,19 @@ component extends=BaseSpec {
             it("logs an entry", () => {
                 config = new Config()
                 logboxConfig = new LogBoxConfig(config)
+
                 logbox = new LogBox(logboxConfig)
                 logger = logbox.getRootLogger()
 
                 logger.info("TEST_INFO")
-                mockbox.prepareMock(logbox)
-                appender = logbox.$getProperty("appenderRegistry").inMemoryAppender
+
+                appender = logger.getAppenders().inMemoryAppender
                 testLog = appender.getLog()
 
                 expect(testLog).toHaveLength(1)
                 expect(testLog[1]).toSatisfy((actual) => {
                     expect(actual.message).toBe("TEST_INFO")
-                    expect(actual.severity).toBe(3)
+                    expect(actual.severity).toBe(logger.logLevels.INFO)
                     expect(actual.timestamp).toBeCloseTo(now(), 2, "s")
                     return true
                 }, "Log entry is not correct")
