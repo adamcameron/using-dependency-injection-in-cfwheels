@@ -3,7 +3,7 @@ import test.BaseSpec
 component extends=BaseSpec {
 
     function run() {
-        describe("Tests for TestModel", () => {
+        describe("Tests for Test model", () => {
 
             it("proxies method implementation to depedency", () => {
                 testModel = model("Test").new()
