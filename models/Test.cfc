@@ -3,6 +3,7 @@ import wheels.Model
 component extends=Model {
 
     function config() {
+        super.config()
         table(name="test")
         afterInitialization("setFindMe")
     }
@@ -14,4 +15,13 @@ component extends=Model {
     public string function getFindMe() {
         return variables.findMe
     }
+
+    private function setDependencies() {
+        variables.dependency = variables.diService.getBean("TestDependency")
+    }
+
+    public function getMessage() {
+        return variables.dependency.getMessage()
+    }
+
 }
