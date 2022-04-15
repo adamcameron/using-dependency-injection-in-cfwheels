@@ -18,8 +18,6 @@ RUN echo "deb https://downloads.ortussolutions.com/debs/noarch /" | tee -a /etc/
 RUN apt-get update && apt-get install apt-transport-https commandbox --yes
 RUN echo exit | box
 
-RUN box install
-
 RUN echo ${LUCEE_PASSWORD} > /opt/lucee/server/lucee-server/context/password.txt
 
 EXPOSE 8888

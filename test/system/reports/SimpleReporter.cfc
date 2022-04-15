@@ -1,3 +1,7 @@
+/*	copied from testbox/system/reports/SimpleReporter.cfc
+	We just need the path of assets/simple.cfm to be the one adjacent to this file
+*/
+
 component extends=testbox.system.reports.SimpleReporter {
 
 	/**

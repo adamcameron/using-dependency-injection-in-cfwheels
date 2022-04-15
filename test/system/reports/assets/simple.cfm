@@ -1,3 +1,7 @@
+<!---
+	copied from testbox/system/reports/assets/simple.cfm
+	only how the bundles links has changed (see call to getLinksToBundlePaths, and the code relating to it)
+--->
 <cfparam name="url.fullPage" default="true">
 <cfset ASSETS_DIR = expandPath( "/testbox/system/reports/assets" )>
 <cfoutput>
@@ -149,7 +153,7 @@
 									>
 										<h5 class="mb-0 clearfix">
 											<!--- bundle stats --->
-                                            #getLinksToBundlesPaths(thisBundle)#
+                                            #getLinksToBundlePaths(thisBundle)#
                                             (#numberFormat( thisBundle.totalDuration )# ms)
 											<button
 													class="btn btn-link float-right py-0 bundle-btn"
@@ -633,18 +637,20 @@ code {
 
 
 <cfscript>
-string function getLinksToBundlesPaths(thisBundle) {
-    directories = thisBundle.path.listReduce((paths, pathElement) => {
-        previousPath = paths.len() ? paths.last() : ""
-        thisPath = previousPath.listAppend(pathElement, ".")
-        return paths.append(thisPath)
+string function getLinksToBundlePaths(this_bundle) {
+    path_elements = this_bundle.path.listReduce((paths, path_element) => {
+        previous_path = paths.len() ? paths.last() : ""
+        this_path = previous_path.listAppend(path_element, ".")
+        return paths.append(this_path)
     }, [], ".")
-    bundle = directories.pop()
+
+	bundle = path_elements.last()
+    directories = path_elements.deleteAt(path_elements.len())
 
     links = directories.reduce((links, directory) => {
         return links.listAppend(
             makeLink(
-                makeHref([directories = URLEncodedFormat(directory)]),
+                makeHref(["directories" = URLEncodedFormat(directory)]),
                 directory.listLast(".")
             ),
             "."
@@ -652,7 +658,7 @@ string function getLinksToBundlesPaths(thisBundle) {
     }, "")
     links = links.listAppend(
         makeLink(
-            makeHref([testbundles = URLEncodedFormat(bundle)]),
+            makeHref(["testbundles" = URLEncodedFormat(bundle)]),
             bundle.listLast(".")
         ),
         "."
@@ -663,7 +669,7 @@ string function getLinksToBundlesPaths(thisBundle) {
 
 string function makeHref(required struct params) {
     return variables.baseURL
-        & "opt_run=true&coverageEnabled=false&"
+        & "&opt_run=true&coverageEnabled=false&"
         & params.reduce((params, key, value) => params & "#key#=#value#", "")
 }
 

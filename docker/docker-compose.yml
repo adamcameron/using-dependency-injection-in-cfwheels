@@ -14,7 +14,7 @@ services:
             - ../var/log/lucee:/opt/lucee/web/logs
             - ./lucee/root_home/.bash_history:/root/.bash_history
         ports:
-            - "8888:8888"
+            - "8890:8888"
         stdin_open: true
         tty: true
         networks:
@@ -29,7 +29,7 @@ services:
             - MARIADB_USER=${MARIADB_USER}
             - MARIADB_PASSWORD=${MARIADB_PASSWORD}
         ports:
-            - "3307:3306"
+            - "3309:3306"
         volumes:
             - mysqlData:/var/lib/mariadb
             - ./mariadb/root_home:/root
