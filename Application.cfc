@@ -8,6 +8,7 @@ component {
     private void function setSettings() {
         this.name = "cfwudi"
         this.localMode = "modern"
+        this.bufferOutput = true
     }
 
     private void function loadDataSources() {

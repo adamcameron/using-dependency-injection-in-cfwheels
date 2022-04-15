@@ -4,16 +4,14 @@
  * Do not delete this file.
  */
 
-import services.DependencyInjectionService
-
- component extends=wheels.Model {
+component extends=wheels.Model {
 
     function config() {
         afterInitialization("loadIocContainer")
     }
 
     private function loadIocContainer() {
-        variables.diService = new DependencyInjectionService()
+        variables.diService = $getFromCache("diService")
         setDependencies()
     }
 
