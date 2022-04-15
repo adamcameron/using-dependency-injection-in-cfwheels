@@ -1,4 +1,4 @@
-import testbox.system.BaseSpec
+import test.BaseSpec
 
 component extends=BaseSpec {
 

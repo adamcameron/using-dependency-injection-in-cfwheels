@@ -3,6 +3,7 @@ component {
     setsettings()
     loadDatasources()
     loadMappings()
+    loadCfWheels()
 
     private void function setSettings() {
         this.name = "cfwudi"
@@ -27,5 +28,9 @@ component {
     }
 
     private void function loadMappings() {
+    }
+
+    private void function loadCfWheels() {
+        include "wheels/functions.cfm";
     }
 }
