@@ -1,4 +1,5 @@
-FROM lucee/lucee:5.3
+# stuck on 5.3.8.3 until regex bug is fixed
+FROM lucee/lucee:5.3.8.3-SNAPSHOT
 
 ARG LUCEE_PASSWORD
 
