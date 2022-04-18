@@ -1,12 +1,14 @@
 {
     "dependencies":{
-        "fw1":"~4.2.0"
+        "fw1":"~4.2.0",
+        "logbox":"^6.6.1+2"
     },
     "devDependencies":{
         "testbox":"^4.5.0+5"
     },
     "installPaths":{
         "fw1":"framework/",
+        "logbox":"logbox/",
         "testbox":"testbox/"
     },
     "testbox":{
