@@ -20,6 +20,16 @@ component extends=BaseSpec {
 
                 expect(testDependency).toBeInstanceOf("services.TestDependency")
             })
+
+            it("loads a logger", () => {
+                diService = new DependencyInjectionService()
+
+                logger = diService.getBean("Logger")
+
+                expect(logger).toBeInstanceOf("logbox.system.logging.Logger")
+
+                expect(() => logger.info("TEST")).notToThrow()
+            })
         })
     }
 }

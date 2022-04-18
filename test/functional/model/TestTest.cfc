@@ -26,6 +26,33 @@ component extends=BaseSpec {
 
                 expect(test.getFindMe()).toBe("FOUND")
             })
+
+            it("logs via the correct appender", () => {
+                test = model("Test").new()
+
+                prepareMock(test)
+                logger = test.$getProperty("logger")
+
+                appenders = logger.getAppenders()
+                expect(appenders).toHaveKey("DummyAppender", "Logger is not configured with the correct appender. Test aborted.")
+
+                appender = logger.getAppenders().DummyAppender
+                prepareMock(appender)
+                appender.$("logMessage").$results(appender)
+
+                test.getMessage()
+
+                appenderCallLog = appender.$callLog()
+
+                expect(appenderCallLog).toHaveKey("logMessage")
+                expect(appenderCallLog.logMessage).toHaveLength(1)
+                expect(appenderCallLog.logMessage[1]).toSatisfy((actual) => {
+                    expect(actual[1].getMessage()).toBe("getMessage was called")
+                    expect(actual[1].getSeverity()).toBe(logger.logLevels.DEBUG)
+                    expect(actual[1].getTimestamp()).toBeCloseTo(now(), 2, "s")
+                    return true
+                }, "Log entry is not correct")
+            })
         })
     }
 }
